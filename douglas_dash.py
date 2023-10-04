@@ -295,6 +295,17 @@ def mapper_2D():
     # ensure we're working with a geodataframe
     joined_df = gpd.GeoDataFrame(joined_df)
 
+    # Drop one of the Sub_geo columns
+    joined_df.drop(
+        columns=['Sub_geo_x'],
+        inplace=True
+    )
+
+    # Rename the other Sub_geo column
+    joined_df.rename(columns={
+        'Sub_geo_y': 'Sub_geo'
+    }, inplace=True)
+
     # gonna be ugly as sin, but format the proper column
     joined_df['var_formatted'] = joined_df[dash_variable_dict[dash_variable][0]].apply(
         lambda x: dash_variable_dict[dash_variable][2].format((x)))
@@ -351,6 +362,7 @@ def mapper_2D():
                   "text-align": "center"
                   },
     }
+    st.dataframe(joined_df.columns)
 
     # instantiate the map object to be rendered to the Streamlit dashboard
     r = pdk.Deck(
@@ -379,6 +391,17 @@ def mapper_3D():
 
     # ensure we're working with a geodataframe
     joined_df = gpd.GeoDataFrame(joined_df)
+
+    # Drop one of the Sub_geo columns
+    joined_df.drop(
+        columns=['Sub_geo_x'],
+        inplace=True
+    )
+
+    # Rename the other Sub_geo column
+    joined_df.rename(columns={
+        'Sub_geo_y': 'Sub_geo'
+    }, inplace=True)
 
     # gonna be ugly as sin, but format the proper column
     joined_df['var_formatted'] = joined_df[dash_variable_dict[dash_variable][0]].apply(
