@@ -362,7 +362,6 @@ def mapper_2D():
                   "text-align": "center"
                   },
     }
-    st.dataframe(joined_df.columns)
 
     # instantiate the map object to be rendered to the Streamlit dashboard
     r = pdk.Deck(
