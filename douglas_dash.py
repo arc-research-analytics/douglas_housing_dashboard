@@ -36,7 +36,7 @@ st.set_page_config(
     page_title=f"{county_var} County Housing Trends",
     page_icon=":house:",
     layout="wide",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="expanded"
 )
 
 # the custom CSS lives here:
